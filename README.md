@@ -25,7 +25,7 @@ Assuming Python and pip are set up, the Python-packages used by this code can be
 
 `pip install -r requirements.txt`
 
-You need to applicant the IAM dataset from <http://www.fki.inf.unibe.ch/databases/iam-handwriting-database> and then extract the handwriting images. For convenience, here we provide the processed h5py files [trnvalset_words32.hdf5](), [testset_words32.hdf5](), [testset_words32d_OrgSz.hdf5](), which should put into the **./data/** directory.
+You need to applicant the IAM dataset from <http://www.fki.inf.unibe.ch/databases/iam-handwriting-database> and then extract the handwriting images. For convenience, here we provide the processed h5py files [trnvalset_words32.hdf5](https://drive.google.com/file/d/1K6nNcQ-4_MiPiaOUdXi80x5fVlheXbYM/view), [testset_words32.hdf5](https://drive.google.com/file/d/121wcainZweuXqCFyh5Q0WV3qb2SmNdBS/view), [testset_words32d_OrgSz.hdf5](https://drive.google.com/file/d/1vNbSiz7S60fvpj6-4k0fzHwx2uHDv0_0/view?usp=sharing), which should put into the **./data/** directory.
 
 
 ## Training & Test
