@@ -1,0 +1,6 @@
+torch>=1.0
+tensorboard
+munch
+opencv-python
+h5py
+sklearn

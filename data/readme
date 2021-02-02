@@ -1,0 +1,4 @@
+Put the following files in this directory:
+trnvalset_words32.hdf5
+testset_words32.hdf5
+testset_words32d_OrgSz.hdf5
