@@ -70,3 +70,7 @@ The tensorboard server is now alive and can be accessed at http://localhost:6006
 Some on-the-fly plots are given as the followings:
 ![Loss](docs/imgs/LogLoss.png)
 ![Samples](docs/imgs/LogRes.png)
+
+
+## License
+HiGAN is released under the MIT license.
