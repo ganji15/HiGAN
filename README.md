@@ -16,13 +16,16 @@ The current version of the code has been tested with the following environment:
 The versions that were used for other Python-packages are listed in requirements.txt.
 
 To use the code, download the repository and change into it:
+
 `git clone https://github.com/ganji15/HiGAN.git`
 
 `cd HiGAN`
+
 Assuming Python and pip are set up, the Python-packages used by this code can be installed using:
 
 `pip install -r requirements.txt`
-You need to applicant the IAM dataset from <http://www.fki.inf.unibe.ch/databases/iam-handwriting-database> and then extract the handwriting images. For convenience, we here provide the processed h5py files [trnvalset_words32.hdf5](), [testset_words32.hdf5](), [testset_words32d_OrgSz.hdf5](), which should put into the **./data/** directory.
+
+You need to applicant the IAM dataset from <http://www.fki.inf.unibe.ch/databases/iam-handwriting-database> and then extract the handwriting images. For convenience, here we provide the processed h5py files [trnvalset_words32.hdf5](), [testset_words32.hdf5](), [testset_words32d_OrgSz.hdf5](), which should put into the **./data/** directory.
 
 
 ## Training & Test
