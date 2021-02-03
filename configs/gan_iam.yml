@@ -1,4 +1,4 @@
-device: 'cuda:0'
+device: 'cuda:1'
 model: 'adversarial_model'
 dataset: 'iam_word'
 seed: 123456
@@ -19,7 +19,7 @@ training:
   lr: 2.0e-4
   adam_b1: 0.5
   adam_b2: 0.999
-  lambda_kl: 0.0005
+  lambda_kl: 0.001
   # sampling and saving
   sample_iter_val: 200
   print_iter_val: 20
@@ -117,8 +117,8 @@ OcrModel:
 
 EncModel:
   style_dim: 96
-  resolution: 32
-  max_dim: 512
+  resolution: 16
+  max_dim: 256
   in_channel: 1
   init: 'none'
   norm: 'bn'
@@ -128,8 +128,8 @@ EncModel:
 
 WidModel:
   n_writer: 372
-  resolution: 32
-  max_dim: 512
+  resolution: 16
+  max_dim: 256
   in_channel: 1
   init: 'none'
   norm: 'bn'

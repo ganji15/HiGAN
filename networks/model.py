@@ -506,7 +506,6 @@ class AdversarialModel(BaseModel):
         fid_kid = calculate_kid_fid(self.opt.valid, dloader, generator, self.max_valid_image_width, self.device)
         return fid_kid
 
-
     def eval_interp(self):
         self.set_mode('eval')
 
@@ -524,7 +523,7 @@ class AdversarialModel(BaseModel):
 
                 style0 = torch.randn((1, self.opt.GenModel.style_dim))
                 style1 = torch.randn(style0.size())
-                noise = torch.randn((1, self.noise_dim)).repeat(interp_num, 1)
+                noise = torch.randn((1, self.noise_dim)).repeat(interp_num, 1).to(self.device)
 
                 styles = [torch.lerp(style0, style1, i / (interp_num - 1)) for i in range(interp_num)]
                 styles = torch.cat(styles, dim=0).float().to(self.device)
