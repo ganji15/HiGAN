@@ -48,16 +48,20 @@ You need to applicant the IAM dataset from <http://www.fki.inf.unibe.ch/database
 
 #### Latent-guided synthesis
 `python eval_demo.py --config ./configs/gan_iam.yml --ckpt ./runs/gan_iam-02-02-11-43/ckpts/last.pth --mode rand`
+[Rand](docs/imgs/GenRand.png)
 
 #### Reference-guided synthesis
 `python eval_demo.py --config ./configs/gan_iam.yml --ckpt ./runs/gan_iam-02-02-11-43/ckpts/last.pth --mode style`
+[Style](docs/imgs/GenStyle.png)
 
 #### Long text synthesis
 `python eval_demo.py --config ./configs/gan_iam.yml --ckpt ./runs/gan_iam-02-02-11-43/ckpts/last.pth --mode text`
+[Text](docs/imgs/GenText.png)
 
 #### Style interpolation
 `python eval_demo.py --config ./configs/gan_iam.yml --ckpt ./runs/gan_iam-02-02-11-43/ckpts/last.pth --mode interp`
-
+[Interp1](docs/imgs/GenInterp1.png)
+[Interp2](docs/imgs/GenInterp2.png)
 
 
 ## On-the-fly plots during training
