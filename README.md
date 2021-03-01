@@ -1,7 +1,7 @@
 # HiGAN
 
 ## Introduction
-This is a PyTorch implementation of the paper **"HiGAN: Handwriting Imitation Conditioned on Arbitrary-Length Texts and Disentangled Styles"**.
+This is a PyTorch implementation of the paper **"HiGAN: Handwriting Imitation Conditioned on Arbitrary-Length Texts and Disentangled Styles"** (authored by **Ji Gan**  & **Weiwiang Wang** ).
 
 ## Overview of HiGAN
 ![Overview of HiGAN](docs/imgs/Overview.png)
