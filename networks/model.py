@@ -81,14 +81,18 @@ class BaseModel(object):
         ckpt_save_path = os.path.join(self.log_root, self.opt.training.ckpt_dir, tag + '.pth')
         torch.save(ckpt, ckpt_save_path)
 
-    def load(self, ckpt, modules=None):
+    def load(self, ckpt, map_location=None, modules=None):
         if modules is None:
             modules = []
         elif not isinstance(modules, list):
             modules = [modules]
 
         print('load checkpoint from ', ckpt)
-        ckpt = torch.load(ckpt)
+        if map_location is None:
+            ckpt = torch.load(ckpt)
+        else:
+            ckpt = torch.load(ckpt, map_location=map_location)
+
         if len(modules) == 0:
             for model in self.models.values():
                 model.load_state_dict(ckpt[type(model).__name__])

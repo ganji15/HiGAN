@@ -31,7 +31,7 @@ if __name__ == '__main__':
     cfg = yaml2config(args.config)
 
     model = get_model(cfg.model)(cfg, args.config)
-    model.load(args.ckpt)
+    model.load(args.ckpt, cfg.device)
     if args.mode == 'style':
         model.eval_style()
     elif args.mode == 'rand':

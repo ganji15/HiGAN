@@ -42,5 +42,5 @@ if __name__ == '__main__':
     cfg.valid.dset_split = args.split
 
     model = get_model(cfg.model)(cfg, args.config)
-    model.load(args.ckpt)
+    model.load(args.ckpt, cfg.device)
     print(model.validate(args.guided))
