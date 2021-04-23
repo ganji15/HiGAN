@@ -234,3 +234,26 @@ def make_one_hot(labels, len_labels, n_class):
     for i in range(len(labels)):
         one_hot[i, np.array(range(len_labels[i])), labels[i,:len_labels[i]]-1]=1
     return one_hot
+
+
+def rand_clip(imgs, img_lens, min_clip_width=64):
+    device = imgs.device
+    imgs, img_lens = imgs.cpu().numpy(), img_lens.cpu().numpy()
+    clip_imgs, clip_img_lens = [], []
+    for img, img_len in zip(imgs, img_lens):
+        if img_len <= min_clip_width:
+            clip_imgs.append(img[:, :, :img_len])
+            clip_img_lens.append(img_len)
+        else:
+            crop_width = np.random.randint(min_clip_width, img_len)
+            crop_width = crop_width - crop_width % (min_clip_width // 4)
+            rand_pos = np.random.randint(0, img_len - crop_width)
+            clip_img = img[:, :, rand_pos: rand_pos + crop_width]
+            clip_imgs.append(clip_img)
+            clip_img_lens.append(clip_img.shape[-1])
+
+    max_img_len = max(clip_img_lens)
+    pad_imgs = -np.ones((imgs.shape[0], 1, imgs.shape[2], max_img_len))
+    for i, (clip_img, clip_img_len) in enumerate(zip(clip_imgs, clip_img_lens)):
+        pad_imgs[i, 0, :, :clip_img_len] = clip_img
+    return torch.from_numpy(pad_imgs).float().to(device), torch.Tensor(clip_img_lens).int().to(device)

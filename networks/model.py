@@ -14,13 +14,14 @@ except ModuleNotFoundError:
     from tensorboardX import SummaryWriter
 
 from fid_kid.fid_kid_pad import calculate_kid_fid
-from networks.utils import _info, set_requires_grad, get_scheduler, idx_to_words, words_to_images
+from networks.utils import _info, set_requires_grad, get_scheduler, idx_to_words, words_to_images, rand_clip
 from networks.BigGAN_networks import Generator, Discriminator
 from networks.module import Recognizer, WriterIdentifier, StyleEncoder
 from lib.datasets import get_dataset, get_collect_fn, Hdf5Dataset
 from lib.alphabet import strLabelConverter, get_lexicon, get_true_alphabet, Alphabets
 from lib.utils import draw_image, get_logger, AverageMeterManager, option_to_string
 from networks.rand_dist import prepare_z_dist, prepare_y_dist
+from lib.datasets import Hdf5Dataset
 
 
 class BaseModel(object):
@@ -228,7 +229,8 @@ class AdversarialModel(BaseModel):
                 real_ctc_loss = self.ctc_loss(real_ctc, real_lbs, real_ctc_lens, real_lb_lens)
                 self.averager_meters.update('real_ctc_loss', real_ctc_loss.item())
 
-                real_wid_logits = self.models.W(real_imgs, real_img_lens)
+                clip_imgs, clip_img_lens = rand_clip(real_imgs, real_img_lens)
+                real_wid_logits = self.models.W(clip_imgs, clip_img_lens)
                 real_wid_loss = self.classify_loss(real_wid_logits, real_wids)
                 self.averager_meters.update('real_wid_loss', real_wid_loss.item())
 
@@ -333,8 +335,10 @@ class AdversarialModel(BaseModel):
 
                     std_grad_adv = torch.std(grad_fake_adv)
                     gp_ctc = torch.div(std_grad_adv, torch.std(grad_fake_OCR) + 1e-8).detach() + 1
+                    gp_ctc.clamp_max_(100)
                     gp_info = torch.div(std_grad_adv, torch.std(grad_fake_info) + 1e-8).detach() + 1
                     gp_wid = torch.div(std_grad_adv, torch.std(grad_fake_wid) + 1e-8).detach() + 1
+                    gp_wid.clamp_max_(10)
                     self.averager_meters.update('gp_ctc', gp_ctc.item())
                     self.averager_meters.update('gp_info', gp_info.item())
                     self.averager_meters.update('gp_wid', gp_wid.item())

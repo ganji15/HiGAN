@@ -121,11 +121,3 @@ def option_to_string(opt, row_blanks=20):
 
     res = '='*row_blanks + '\nRoot\n' + '-'*row_blanks + '\n' + opt_to_str(opt) + '='*row_blanks
     return res
-
-
-def get_corpus(corpus_path):
-    items = []
-    with open(corpus_path, 'r') as f:
-        for line in f.readlines():
-            items.append(line.strip())
-    return items

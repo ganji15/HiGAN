@@ -19,7 +19,7 @@ training:
   lr: 2.0e-4
   adam_b1: 0.5
   adam_b2: 0.999
-  lambda_kl: 0.001
+  lambda_kl: 0.0001
   # sampling and saving
   sample_iter_val: 200
   print_iter_val: 20

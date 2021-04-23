@@ -49,19 +49,20 @@ def get_activations(data_source, n_batches, max_img_width, model, dims, device):
     for batch in tqdm(data_source, total=n_batches):
         imgs, img_lens = batch[:2]
         imgs, img_lens = imgs.to(device), img_lens.to(device)
-        # print('imgs min:{} max:{}'.format(imgs.min().item(), imgs.max().item()))
         imgs = (imgs + 1) / 2
+        # print('imgs min:{} max:{}'.format(imgs.min().item(), imgs.max().item()))
 
         if imgs.size(1) == 1:
             imgs = imgs.repeat(1, 3, 1, 1)
 
         if imgs.size(-1) < max_img_width:
             pad_width = max_img_width - imgs.size(-1)
-            imgs = torch.nn.functional.pad(imgs, [0, pad_width, 0, 0], value=-1.)
+            imgs = torch.nn.functional.pad(imgs, [0, pad_width, 0, 0], value=0.)
+            # import matplotlib.pyplot as plt
             # plt.subplot(211)
-            # plt.imshow(imgs[0, 0].cpu().numpy(), cmap='gray')
+            # plt.imshow(imgs[0, 0].cpu().numpy(), cmap='binary')
             # plt.subplot(212)
-            # plt.imshow(imgs[1, 0].cpu().numpy(), cmap='gray')
+            # plt.imshow(imgs[1, 0].cpu().numpy(), cmap='binary')
             # plt.show()
 
         with torch.no_grad():
