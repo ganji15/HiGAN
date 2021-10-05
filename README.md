@@ -30,7 +30,7 @@ You need to applicant the IAM dataset from <http://www.fki.inf.unibe.ch/database
 
 ## Training & Test
 ### Training HiGAN on the IAM dataset
-`python main.py --config ./configs/gan_iam.yml`
+`python train.py --config ./configs/gan_iam.yml`
 
 ### Quantitative Test
 `python test.py --config ./configs/gan_iam.yml --ckpt ./runs/gan_iam-02-02-11-43/ckpts/last.pth --guided True`
