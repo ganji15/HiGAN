@@ -76,5 +76,18 @@ Some on-the-fly plots are given as the followings:
 ![Samples](docs/imgs/LogRes.png)
 
 
+## Citation
+If you find our research is helpful, please remember to cite our paper
+```
+@inproceedings{gan2021higan,
+  author={Gan, Ji and Wang, Weiqiang},
+  title     = {HiGAN: Handwriting Imitation Conditioned on Arbitrary-Length Texts
+               and Disentangled Styles},
+  booktitle = {AAAI Conference on Artificial Intelligence},
+  pages     = {7484--7492},
+  year      = {2021}
+}
+```
+
 ## License
 HiGAN is released under the MIT license.
