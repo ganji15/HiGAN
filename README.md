@@ -77,7 +77,7 @@ Some on-the-fly plots are given as the followings:
 
 
 ## Citation
-If you find our research is helpful, please remember to cite our paper
+If you find our research is helpful, please remember to cite our paper:
 ```
 @inproceedings{gan2021higan,
   author={Gan, Ji and Wang, Weiqiang},
